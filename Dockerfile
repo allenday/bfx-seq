@@ -27,4 +27,13 @@ RUN rm sratoolkit.2.8.1-3-ubuntu64.tar.gz
 WORKDIR /opt/freebayes
 RUN make
 
+WORKDIR /opt/freebayes/vcflib
+RUN make
 
+WORKDIR /opt
+RUN ln -s /opt/freebayes/bamtools /opt/bamtools
+RUN ln -s /opt/freebayes/vcflib /opt/vcflib
+RUN ln -s /opt/freebayes/fastahack /opt/fastahack
+RUN ln -s /opt/vcflib/tabixpp/htslib /opt/htslib
+
+WORKDIR /
