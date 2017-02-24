@@ -8,10 +8,6 @@ ENV IMAGE_PACKAGES="bwa samtools picard-tools vcftools nginx"
 RUN apt-get -y update
 RUN apt-get -y --no-install-recommends install $BUILD_PACKAGES $IMAGE_PACKAGES
 
-## cleanup
-RUN apt-get -y remove --purge $BUILD_PACKAGES
-RUN apt-get -y remove --purge $(apt-mark showauto)
-RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt
 RUN git clone --recursive git://github.com/ekg/freebayes.git
@@ -39,4 +35,10 @@ RUN ln -s /opt/vcflib/tabixpp/htslib /opt/htslib
 WORKDIR /
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+
+## cleanup
+RUN apt-get -y remove --purge $BUILD_PACKAGES
+RUN apt-get -y remove --purge $(apt-mark showauto)
+RUN rm -rf /var/lib/apt/lists/*
+
 CMD nginx
