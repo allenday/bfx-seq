@@ -41,4 +41,4 @@ RUN apt-get -y remove --purge $BUILD_PACKAGES
 RUN apt-get -y remove --purge $(apt-mark showauto)
 RUN rm -rf /var/lib/apt/lists/*
 
-CMD nginx
+CMD /usr/sbin/nginx
