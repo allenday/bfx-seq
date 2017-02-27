@@ -38,7 +38,7 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 ## cleanup
 RUN apt-get -y remove --purge $BUILD_PACKAGES
-RUN apt-get -y remove --purge $(apt-mark showauto)
+#RUN apt-get -y remove --purge $(apt-mark showauto)
 RUN rm -rf /var/lib/apt/lists/*
 
 CMD /usr/sbin/nginx
