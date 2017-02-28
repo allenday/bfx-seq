@@ -3,7 +3,7 @@ FROM google/cloud-sdk
 MAINTAINER Allen Day "allenday@allenday.com"
 
 ENV BUILD_PACKAGES="make gcc wget zlib1g-dev git g++ cmake"
-ENV IMAGE_PACKAGES="bwa samtools picard-tools vcftools nginx"
+ENV IMAGE_PACKAGES="bwa bedtools samtools picard-tools vcftools nginx"
 
 RUN apt-get -y update
 RUN apt-get -y --no-install-recommends install $BUILD_PACKAGES $IMAGE_PACKAGES
