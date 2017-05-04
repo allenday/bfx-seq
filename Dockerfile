@@ -2,12 +2,17 @@ FROM google/cloud-sdk
 
 MAINTAINER Allen Day "allenday@allenday.com"
 
-ENV BUILD_PACKAGES="make gcc wget zlib1g-dev git g++ cmake"
+ENV BUILD_PACKAGES="make gcc wget zlib1g-dev git g++ cmake python-dev python-setuptools"
 ENV IMAGE_PACKAGES="bwa bedtools samtools picard-tools vcftools nginx"
 
 RUN apt-get -y update
 RUN apt-get -y --no-install-recommends install $BUILD_PACKAGES $IMAGE_PACKAGES
 
+#for gsutil
+WORKDIR /opt
+RUN easy_install -U pip
+RUN pip uninstall crcmod
+RUN pip install -U crcmod
 
 WORKDIR /opt
 RUN git clone --recursive git://github.com/ekg/freebayes.git
