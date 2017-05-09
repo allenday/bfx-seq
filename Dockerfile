@@ -11,7 +11,6 @@ RUN apt-get -y --no-install-recommends install $BUILD_PACKAGES $IMAGE_PACKAGES
 #for gsutil
 WORKDIR /opt
 RUN easy_install -U pip
-RUN pip uninstall crcmod
 RUN pip install -U crcmod
 
 #freebayes
