@@ -40,7 +40,7 @@ RUN git clone https://github.com/broadgsa/gatk-protected.git gatk
 WORKDIR /opt/gatk
 RUN git reset --hard $SHA
 RUN mvn verify
-RUN bash -c 'echo -e "#!/bin/bash\njava -jar /opt/gatk/target/GenomeAnalysisTK.jar \$@" > /opt/gatk/gatk
+RUN bash -c 'echo -e "#!/bin/bash\njava -jar /opt/gatk/target/GenomeAnalysisTK.jar \$@"' > /opt/gatk/gatk
 RUN chmod +x /opt/gatk/gatk
 
 
